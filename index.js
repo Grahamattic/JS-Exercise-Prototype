@@ -97,18 +97,46 @@ Car.prototype.drive = function(distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+Person.prototype.eat = function(someFood) {
+  if (this.stomach.length < 10) {
+  this.ateFood = this.stomach.push(someFood);
+  };
+}
+Person.prototype.poop = function () {
+  this.pooped = this.stomach.splice(0, this.stomach.length);
+}
+function Baby(name,age,favoriteToy) {
+    Person.call(this, name,age,favoriteToy);    
+}
+Baby.prototype = Object.create(Person.prototype);
+
+const newBaby = new Baby("Bethel",1,"dolls") ({
+});
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}!`;
 }
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  1. Window/Global Object Binding. When in the global scope, the value of "this" will be the
+  window/console Object.
+
+  2. Implicit Binding. Whenever a preceding dot calls a function, the object before the dot is this.
+
+  3. New binding . Whenever we use a constructor function, this refers to the specific instance
+  of the object that is created and returned by the constructor function.
+
+  4. Explicit binding. Whenever we use JavaScript’s call or apply method, this is explicitly defined.
+
 */
 
 
