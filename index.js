@@ -112,7 +112,8 @@ Person.prototype.poop = function () {
   this.pooped = this.stomach.splice(0, this.stomach.length);
 }
 function Baby(name,age,favoriteToy) {
-    Person.call(this, name,age,favoriteToy);    
+    Person.call(this, name,age);  
+    this.favoriteToy = favoriteToy;  
 }
 Baby.prototype = Object.create(Person.prototype);
 
