@@ -55,7 +55,7 @@ Airplane.prototype.land = function () {
           return `${this.name}, ${this.age}`;
         }
 
-
+        
 /* TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
     - All instances built with Car:
@@ -90,7 +90,7 @@ Airplane.prototype.land = function () {
 
         Car("Chrysler300", 19);
 
-        
+
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -115,10 +115,17 @@ Airplane.prototype.land = function () {
         Person.prototype.toString = function () {
             return `${this.name}, ${this.age}`;
         }
+        function Baby (name,age,favoriteToy) {
+            Person.call(this, name,age);
+            this.name = name;
+            this.age = age;
+            this.favoriteToy = favoriteToy;
+        }
+
         Baby.prototype = Object.create(Person.prototype);
 
-        const newBaby = new Baby("Bethel",1,"babyDoll") {
-        };
+        const newBaby = new Baby("Bethel",1,"babyDoll");
+
         Baby.prototype.play = function () {
           return `Playing with ${this.favoriteToy}.`;
         }
