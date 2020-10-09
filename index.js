@@ -26,8 +26,7 @@ Airplane.prototype.land = function () {
 // 👇 COMPLETE YOUR WORK BELOW 👇
 */
 
-/*
-  TASK 1
+/* TASK 1
     - Write a Person Constructor that initializes `name` and `age` from arguments.
     - All instances of Person should initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
@@ -39,22 +38,22 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person(name,age) {
-    this.name = name;
-    this.age = age;
-    this.stomach = [];
-}
-Person.prototype.eat = function(someFood) {
-  if (this.stomach.length < 10) {
-  this.ateFood = this.stomach.push(someFood);
-  };
-}
-Person.prototype.poop = function () {
-  this.pooped = this.stomach.splice(0, this.stomach.length);
-}
-Person.prototype.toString = function () {
-  return `${age}, ${name}`;
-}
+        function Person(name,age) {
+            this.name = name;
+            this.age = age;
+            this.stomach = [];
+        }
+        Person.prototype.eat = function(someFood) {
+          if (this.stomach.length < 10) {
+          this.ateFood = this.stomach.push(someFood);
+          };
+        }
+        Person.prototype.poop = function () {
+          this.pooped = this.stomach.splice(0, this.stomach.length);
+        }
+        Person.prototype.toString = function () {
+          return `${this.name}, ${this.age}`;
+        }
 
 
 /* TASK 2
@@ -70,26 +69,28 @@ Person.prototype.toString = function () {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car(model,milesPerGallon) {
-    this.model = model;
-    this.milesPerGallon = milesPerGallon;
-    this.tank = 0;
-    this.odometer = 0;
-}
-Car.prototype.fill = function(gallons) {
-  this.tank = this.tank + gallons;
-}
-// Stretch
-Car.prototype.drive = function(distance) {
-  this.odometer = this.odometer + distance;
-  this.tank = this.tank - (this.odometer / this.milesPerGallon);
-  // Stretch
-  if (this.tank < 0) {
-    return `I ran out of fuel at ${this.odometer} miles!`
-  }
-}
+        function Car(model,milesPerGallon) {
+            this.model = model;
+            this.milesPerGallon = milesPerGallon;
+            this.tank = 0;
+            this.odometer = 0;
+        }
+        Car.prototype.fill = function(gallons) {
+            this.tank = this.tank + gallons;
+        }
+        // Stretch
+        Car.prototype.drive = function(distance) {
+            this.odometer = this.odometer + distance;
+            this.tank = this.tank - (this.odometer / this.milesPerGallon);
+            // Stretch
+            if (this.tank < 0) {
+                return `I ran out of fuel at ${this.odometer} miles!`
+            }
+        }
 
+        Car("Chrysler300", 19);
 
+        
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -98,45 +99,44 @@ Car.prototype.drive = function(distance) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Person(name,age) {
-  this.name = name;
-  this.age = age;
-  this.stomach = [];
-}
-Person.prototype.eat = function(someFood) {
-  if (this.stomach.length < 10) {
-  this.ateFood = this.stomach.push(someFood);
-  };
-}
-Person.prototype.poop = function () {
-  this.pooped = this.stomach.splice(0, this.stomach.length);
-}
-function Baby(name,age,favoriteToy) {
-    Person.call(this, name,age);  
-    this.favoriteToy = favoriteToy;  
-}
-Baby.prototype = Object.create(Person.prototype);
+        function Person(name,age) {
+            this.name = name;
+            this.age = age;
+            this.stomach = [];
+        }
+        Person.prototype.eat = function(someFood) {
+            if (this.stomach.length < 10) {
+            this.ateFood = this.stomach.push(someFood);
+            };
+        }
+        Person.prototype.poop = function () {
+            this.pooped = this.stomach.splice(0, this.stomach.length);
+        }
+        Person.prototype.toString = function () {
+            return `${this.name}, ${this.age}`;
+        }
+        Baby.prototype = Object.create(Person.prototype);
 
-const newBaby = new Baby("Bethel",1,"dolls") ({
-});
-Baby.prototype.play = function () {
-  return `Playing with ${this.favoriteToy}!`;
-}
+        const newBaby = new Baby("Bethel",1,"babyDoll") {
+        };
+        Baby.prototype.play = function () {
+          return `Playing with ${this.favoriteToy}.`;
+        }
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
 
-  1. Window/Global Object Binding. When in the global scope, the value of "this" will be the
-  window/console Object.
+  1. Window/Global Object Binding. The value of "this" will be the window/console Object when in the
+     Global scope.
 
-  2. Implicit Binding. Whenever a preceding dot calls a function, the object before the dot is this.
+  2. Implicit Binding. The object before the dot is "this" whenever a preceding dot calls a function.
 
-  3. New binding . Whenever we use a constructor function, this refers to the specific instance
-  of the object that is created and returned by the constructor function.
+  3. New Binding. "This" refers specifically to the instance of the object that is created and returned
+     by the constructor function whenever a constructor function is used.
 
-  4. Explicit binding. Whenever we use JavaScript’s call or apply method, this is explicitly defined.
+  4. Explicit binding. "This" is explicitly defined whenever JavaScript’s call or apply method is used.
 
 */
 
